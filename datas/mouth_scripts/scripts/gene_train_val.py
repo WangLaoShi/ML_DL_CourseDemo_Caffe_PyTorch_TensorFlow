@@ -2,9 +2,9 @@ import sys
 def splittrain_val(fileall,valratio=0.1):
     fileids = fileall.split('.')
     fileid = fileids[len(fileids)-2]
-    f=open(fileall);
-    ftrain=open(fileid+"_train.txt",'w');
-    fval=open(fileid+"_val.txt",'w');
+    f = open(fileall);
+    ftrain = open(fileid+"_train.txt",'w');
+    fval = open(fileid+"_val.txt",'w');
     count = 0
     if valratio == 0 or valratio >= 1:
         valratio = 0.1

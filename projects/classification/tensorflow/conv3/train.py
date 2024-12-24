@@ -19,7 +19,7 @@ if __name__=="__main__":
     batch_images,batch_labels = iterator.get_next()
     Ylogits = simpleconv3net(batch_images)
 
-    print "Ylogits size=",Ylogits.shape
+    print("Ylogits size=",Ylogits.shape)
 
     Y = tf.nn.softmax(Ylogits)
     cross_entropy = tf.nn.softmax_cross_entropy_with_logits(logits=Ylogits, labels=batch_labels)
@@ -48,20 +48,20 @@ if __name__=="__main__":
         for i in range(steps): 
             _,cross_entropy_,accuracy_,batch_images_,batch_labels_,loss_summary_,acc_summary_,image_summary_ = sess.run([train_step,cross_entropy,accuracy,batch_images,batch_labels,loss_summary,acc_summary,image_summary])
             if i % in_steps == 0 :
-                print i,"iterations,loss=",cross_entropy_,"acc=",accuracy_
+                print(i,"iterations,loss=",cross_entropy_,"acc=",accuracy_)
                 saver.save(sess, checkpoint_dir + 'model.ckpt', global_step=i+1)    
                 summary.add_summary(loss_summary_, i)
                 summary.add_summary(acc_summary_, i)
                 summary.add_summary(image_summary_, i)
-                #print "predict=",Ylogits," labels=",batch_labels
+                #print("predict=",Ylogits," labels=",batch_labels
 
                 if debug:
                     imagedebug = batch_images_[0].copy()
                     imagedebug = np.squeeze(imagedebug)
-                    print imagedebug,imagedebug.shape
-                    print np.max(imagedebug)
+                    print(imagedebug,imagedebug.shape)
+                    print(np.max(imagedebug))
                     imagelabel = batch_labels_[0].copy()
-                    print np.squeeze(imagelabel)
+                    print(np.squeeze(imagelabel))
 
                     imagedebug = cv2.cvtColor((imagedebug*255).astype(np.uint8),cv2.COLOR_RGB2BGR)
                     cv2.namedWindow("debug image",0)

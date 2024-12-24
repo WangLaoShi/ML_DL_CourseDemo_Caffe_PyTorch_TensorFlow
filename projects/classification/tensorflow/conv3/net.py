@@ -16,11 +16,11 @@ def simpleconv3net(x):
         logits= tf.layers.dense(inputs=dense, units=2, activation=tf.nn.relu,name="logits",kernel_initializer=tf.contrib.layers.xavier_initializer())
         
         if debug:
-            print "x size=",x.shape
-            print "relu_conv1 size=",conv1.shape
-            print "relu_conv2 size=",conv2.shape
-            print "relu_conv3 size=",conv3.shape
-            print "dense size=",dense.shape
-            print "logits size=",logits.shape
+            print("x size=",x.shape)
+            print("relu_conv1 size=",conv1.shape)
+            print("relu_conv2 size=",conv2.shape)
+            print("relu_conv3 size=",conv3.shape)
+            print("dense size=",dense.shape)
+            print("logits size=",logits.shape)
 
     return logits

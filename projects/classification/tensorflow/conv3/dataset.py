@@ -25,21 +25,21 @@ class ImageData:
         # 读取图片
         self.read_txt_file()
         self.dataset_size = len(self.labels) 
-        print "num of train datas=",self.dataset_size
+        print("num of train datas=",self.dataset_size)
         # 转换成Tensor
         self.img_paths = convert_to_tensor(self.img_paths, dtype=dtypes.string)
         self.labels = convert_to_tensor(self.labels, dtype=dtypes.int32)
 
         # 创建数据集
         data = Dataset.from_tensor_slices((self.img_paths, self.labels))
-        print "data type=",type(data)
+        print("data type=",type(data))
         data = data.map(self.parse_function)
         data = data.repeat(1000)
         data = data.shuffle(buffer_size=buffer_size)
 
         # 设置self data Batch
         self.data = data.batch(batch_size)
-        print "self.data type=",type(self.data)
+        print("self.data type=",type(self.data))
     
     def augment_dataset(self,image,size):
         distorted_image = tf.image.random_brightness(image,

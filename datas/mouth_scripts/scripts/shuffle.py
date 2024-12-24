@@ -24,9 +24,9 @@ def shuffle(file_in,file_out,num):
         else:
             break
     
-    print "-----there is-----"+str(count)+'-----object in filein'
+    print("-----there is-----"+str(count)+'-----object in filein')
     if num > count:
-        print "-----the select num-----"+str(num)+'-----is bigger than files in file_in'
+        print("-----the select num-----"+str(num)+'-----is bigger than files in file_in')
         return
     count_select = 0
     while 1:

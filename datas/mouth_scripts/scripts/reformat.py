@@ -8,7 +8,7 @@ def listfiles(rootDir):
     list_dirs = os.walk(rootDir)
     for root, dirs, files in list_dirs:
         for d in dirs:
-            print os.path.join(root,d)
+            print(os.path.join(root,d))
         for f in files:
                 
             fileid = f.split('.')[0] 
@@ -16,7 +16,7 @@ def listfiles(rootDir):
             filepath = os.path.join(root,f)
             try:
                 src = cv2.imread(filepath,1)
-                print "src=",filepath,src.shape
+                print("src=",filepath,src.shape)
                 os.remove(filepath)
                 cv2.imwrite(os.path.join(root,fileid+".jpg"),src)
             except:

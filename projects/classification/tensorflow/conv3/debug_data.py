@@ -19,35 +19,35 @@ if __name__=="__main__":
     iterator = dataset.data.make_one_shot_iterator()
     dataset_size = dataset.dataset_size
     
-    print "dataset type=",type(dataset)
-    print "iterator=",type(iterator)
-    print iterator
+    print("dataset type=",type(dataset))
+    print("iterator=",type(iterator))
+    print(iterator)
     one_element = iterator.get_next()
-    print "one_element=",one_element
+    print("one_element=",one_element)
    
     Ylogits = simpleconv3net(one_element[0])
-    print "Ylogits size=",Ylogits.shape
+    print("Ylogits size=",Ylogits.shape)
     Y = tf.nn.softmax(Ylogits)
     cross_entropy = tf.nn.softmax_cross_entropy_with_logits(logits=Ylogits, labels=one_element[1])
     cross_entropy = tf.reduce_mean(cross_entropy)*100
     correct_prediction = tf.equal(tf.argmax(Y, 1), tf.argmax(one_element[1], 1))
     accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
     
-    print "accuracy=",accuracy
+    print("accuracy=",accuracy)
 
 
     with tf.Session() as sess:
         for _ in range(1):
             result = sess.run([one_element])
-            print result[0][0].shape
-            print result[0][1].shape
+            print(result[0][0].shape)
+            print(result[0][1].shape)
             imagedebug = result[0][0].copy()
             labeldebug = result[0][1].copy()
 
     imagedebug = np.squeeze(imagedebug)
-    print imagedebug
-    print np.max(imagedebug)
-    print labeldebug
+    print(imagedebug)
+    print(np.max(imagedebug))
+    print(labeldebug)
 
     imagedebug = cv2.cvtColor((imagedebug*255).astype(np.uint8),cv2.COLOR_RGB2BGR)
 

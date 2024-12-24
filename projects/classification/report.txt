@@ -1,0 +1,119 @@
+TensorFlow 2.0 Upgrade Script
+-----------------------------
+Converted 5 files
+Detected 3 issues that require attention
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+File: tensorflow/conv3/debug_data.py
+--------------------------------------------------------------------------------
+tensorflow/conv3/debug_data.py:19:15: WARNING: Changing dataset.make_one_shot_iterator() to tf.compat.v1.data.make_one_shot_iterator(dataset). Please check this transformation.
+
+--------------------------------------------------------------------------------
+File: tensorflow/conv3/train.py
+--------------------------------------------------------------------------------
+tensorflow/conv3/train.py:17:15: WARNING: Changing dataset.make_one_shot_iterator() to tf.compat.v1.data.make_one_shot_iterator(dataset). Please check this transformation.
+
+tensorflow/conv3/train.py:52:16: WARNING: *.save requires manual check. (This warning is only applicable if the code saves a tf.Keras model) Keras model.save now saves to the Tensorflow SavedModel format by default, instead of HDF5. To continue saving to HDF5, add the argument save_format='h5' to the save() function.
+================================================================================
+Detailed log follows:
+
+================================================================================
+================================================================================
+Input tree: 'tensorflow/'
+================================================================================
+--------------------------------------------------------------------------------
+Processing file 'tensorflow/conv3/debug_data.py'
+ outputting to 'tensorflow_v2/conv3/debug_data.py'
+--------------------------------------------------------------------------------
+
+19:15: WARNING: Changing dataset.make_one_shot_iterator() to tf.compat.v1.data.make_one_shot_iterator(dataset). Please check this transformation.
+
+31:20: INFO: Changing labels arg of tf.nn.softmax_cross_entropy_with_logits to tf.stop_gradient(labels). Please check this transformation.
+
+32:20: INFO: Added keywords to args of function 'tf.reduce_mean'
+33:34: INFO: Added keywords to args of function 'tf.argmax'
+33:51: INFO: Added keywords to args of function 'tf.argmax'
+34:15: INFO: Added keywords to args of function 'tf.reduce_mean'
+39:9: INFO: Renamed 'tf.Session' to 'tf.compat.v1.Session'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file 'tensorflow/conv3/net.py'
+ outputting to 'tensorflow_v2/conv3/net.py'
+--------------------------------------------------------------------------------
+
+6:14: INFO: Added keywords to args of function 'tf.shape'
+7:9: INFO: Renamed 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+8:16: INFO: Renamed 'tf.layers.conv2d' to 'tf.compat.v1.layers.conv2d'
+8:136: INFO: Changing tf.contrib.layers xavier initializer to a tf.compat.v1.keras.initializers.VarianceScaling and converting arguments.
+
+8:192: INFO: Changing tf.contrib.layers xavier initializer to a tf.compat.v1.keras.initializers.VarianceScaling and converting arguments.
+
+9:14: INFO: Renamed 'tf.layers.batch_normalization' to 'tf.compat.v1.layers.batch_normalization'
+10:16: INFO: Renamed 'tf.layers.conv2d' to 'tf.compat.v1.layers.conv2d'
+10:138: INFO: Changing tf.contrib.layers xavier initializer to a tf.compat.v1.keras.initializers.VarianceScaling and converting arguments.
+
+10:194: INFO: Changing tf.contrib.layers xavier initializer to a tf.compat.v1.keras.initializers.VarianceScaling and converting arguments.
+
+11:14: INFO: Renamed 'tf.layers.batch_normalization' to 'tf.compat.v1.layers.batch_normalization'
+12:16: INFO: Renamed 'tf.layers.conv2d' to 'tf.compat.v1.layers.conv2d'
+12:138: INFO: Changing tf.contrib.layers xavier initializer to a tf.compat.v1.keras.initializers.VarianceScaling and converting arguments.
+
+12:194: INFO: Changing tf.contrib.layers xavier initializer to a tf.compat.v1.keras.initializers.VarianceScaling and converting arguments.
+
+13:14: INFO: Renamed 'tf.layers.batch_normalization' to 'tf.compat.v1.layers.batch_normalization'
+15:16: INFO: Renamed 'tf.layers.dense' to 'tf.compat.v1.layers.dense'
+15:116: INFO: Changing tf.contrib.layers xavier initializer to a tf.compat.v1.keras.initializers.VarianceScaling and converting arguments.
+
+16:16: INFO: Renamed 'tf.layers.dense' to 'tf.compat.v1.layers.dense'
+16:110: INFO: Changing tf.contrib.layers xavier initializer to a tf.compat.v1.keras.initializers.VarianceScaling and converting arguments.
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file 'tensorflow/conv3/dataset.py'
+ outputting to 'tensorflow_v2/conv3/dataset.py'
+--------------------------------------------------------------------------------
+
+55:14: INFO: Renamed 'tf.read_file' to 'tf.io.read_file'
+58:14: INFO: Renamed 'tf.random_crop' to 'tf.image.random_crop'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file 'tensorflow/conv3/train.py'
+ outputting to 'tensorflow_v2/conv3/train.py'
+--------------------------------------------------------------------------------
+
+17:15: WARNING: Changing dataset.make_one_shot_iterator() to tf.compat.v1.data.make_one_shot_iterator(dataset). Please check this transformation.
+
+25:20: INFO: Changing labels arg of tf.nn.softmax_cross_entropy_with_logits to tf.stop_gradient(labels). Please check this transformation.
+
+26:20: INFO: Added keywords to args of function 'tf.reduce_mean'
+27:34: INFO: Added keywords to args of function 'tf.argmax'
+27:51: INFO: Added keywords to args of function 'tf.argmax'
+28:15: INFO: Added keywords to args of function 'tf.reduce_mean'
+29:17: INFO: Renamed 'tf.train.AdamOptimizer' to 'tf.compat.v1.train.AdamOptimizer'
+31:12: INFO: Renamed 'tf.train.Saver' to 'tf.compat.v1.train.Saver'
+39:14: INFO: tf.summary.FileWriter requires manual check. The TF 1.x summary API cannot be automatically migrated to TF 2.0, so symbols have been converted to tf.compat.v1.summary.* and must be migrated manually. Typical usage will only require changes to the summary writing logic, not to individual calls like scalar(). For examples of the new summary API, see the Effective TF 2.0 migration document or check the TF 2.0 TensorBoard tutorials.
+39:14: INFO: Renamed 'tf.summary.FileWriter' to 'tf.compat.v1.summary.FileWriter'
+40:19: INFO: tf.summary.scalar requires manual check. The TF 1.x summary API cannot be automatically migrated to TF 2.0, so symbols have been converted to tf.compat.v1.summary.* and must be migrated manually. Typical usage will only require changes to the summary writing logic, not to individual calls like scalar(). For examples of the new summary API, see the Effective TF 2.0 migration document or check the TF 2.0 TensorBoard tutorials.
+40:19: INFO: Renamed 'tf.summary.scalar' to 'tf.compat.v1.summary.scalar'
+41:18: INFO: tf.summary.scalar requires manual check. The TF 1.x summary API cannot be automatically migrated to TF 2.0, so symbols have been converted to tf.compat.v1.summary.* and must be migrated manually. Typical usage will only require changes to the summary writing logic, not to individual calls like scalar(). For examples of the new summary API, see the Effective TF 2.0 migration document or check the TF 2.0 TensorBoard tutorials.
+41:18: INFO: Renamed 'tf.summary.scalar' to 'tf.compat.v1.summary.scalar'
+42:20: INFO: tf.summary.image requires manual check. The TF 1.x summary API cannot be automatically migrated to TF 2.0, so symbols have been converted to tf.compat.v1.summary.* and must be migrated manually. Typical usage will only require changes to the summary writing logic, not to individual calls like scalar(). For examples of the new summary API, see the Effective TF 2.0 migration document or check the TF 2.0 TensorBoard tutorials.
+42:20: INFO: Renamed 'tf.summary.image' to 'tf.compat.v1.summary.image'
+44:9: INFO: Renamed 'tf.Session' to 'tf.compat.v1.Session'
+45:15: INFO: Renamed 'tf.global_variables_initializer' to 'tf.compat.v1.global_variables_initializer'
+52:16: WARNING: *.save requires manual check. (This warning is only applicable if the code saves a tf.Keras model) Keras model.save now saves to the Tensorflow SavedModel format by default, instead of HDF5. To continue saving to HDF5, add the argument save_format='h5' to the save() function.
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file 'tensorflow/conv3/inference.py'
+ outputting to 'tensorflow_v2/conv3/inference.py'
+--------------------------------------------------------------------------------
+
+8:4: INFO: Renamed 'tf.placeholder' to 'tf.compat.v1.placeholder'
+18:7: INFO: Renamed 'tf.Session' to 'tf.compat.v1.Session'
+19:8: INFO: Renamed 'tf.train.Saver' to 'tf.compat.v1.train.Saver'
+--------------------------------------------------------------------------------
+

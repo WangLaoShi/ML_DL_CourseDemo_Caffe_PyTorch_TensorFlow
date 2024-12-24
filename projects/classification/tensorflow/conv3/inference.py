@@ -20,4 +20,4 @@ saver = tf.train.Saver()
 saver.restore(sess,sys.argv[1])
 result = sess.run(y, feed_dict={x:imgs})
 
-print result
+print(result)

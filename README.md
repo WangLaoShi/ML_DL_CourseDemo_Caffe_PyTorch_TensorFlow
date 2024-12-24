@@ -17,5 +17,5 @@ the machine learning course
 > 
 > 在 PyCharm 中创建的方法如下图。
 
-![1GsB1q](https://oss.images.shujudaka.com/uPic/1GsB1q.png)
+![1GsB1q](https://upiclw.oss-cn-beijing.aliyuncs.com/uPic/1GsB1q.png)
 
